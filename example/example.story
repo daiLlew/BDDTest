@@ -12,7 +12,3 @@ stories:
     and:
       - Dave yells loudly at the cat
       - the cat knows his days are numbered
-  - description: Bailey gets a tuna nibble
-    given: Bailey is a good kitty
-    when: Bailey demonstrates his good behaviour
-    then: he is rewarded with tuna
