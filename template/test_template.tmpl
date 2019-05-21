@@ -8,11 +8,9 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
-// Scenario: {{ .Scenario }}
-// Given {{ .Given }}
-// When {{ .When }}
-// Then {{ .Then }}
-// And {{ .And }}
+{{ range .Scenarios }}
+
+{{ .Comments }}
 func Test_{{ .TestName }}(t *testing.T) {
 
 	Convey("Given {{ .Given }}", t, func() {
@@ -21,9 +19,11 @@ func Test_{{ .TestName }}(t *testing.T) {
 
 			Convey("Then {{ .Then }}", func() {
 			})
-
-			Convey("And {{ .And }}", func() {
+			{{ $length := len .And }} {{ if gt $length 0 }} {{ range .And }}
+			Convey("And {{ . }}", func() {
 			})
+			{{ end }} {{ end }}
 		})
 	})
-}
+}{{ end }}
+
